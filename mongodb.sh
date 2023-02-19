@@ -5,3 +5,4 @@ systemctl start mongod
 
 #Update config file vim /etc/mongod.conf from 127.0.0.1 with 0.0.0.0
 
+systemctl restart mongod
