@@ -2,10 +2,10 @@ source common.sh
 
 print_head "Setup MongoDB repository"
 
-cp configs/mongodb.repo /etc/yum.repos.d/mongo.repo
+cp configs/mongodb.repo /etc/yum.repos.d/mongo.repo &>>${log_file}
 
 print_head "Install Mongodb service"
-yum install mongodb-org -y
+yum install mongodb-org -y &>>${log_file}
 
 print_head "Enable Mongodb"
 systemctl enable mongod
