@@ -17,7 +17,7 @@ status_check() {
 }
 schema_setup()
 {
-if [ "${schema_type} == "mongo" ]; then
+#if [ "${schema_type} == "mongo" ]; then
   print_head "Copy mongodb repository"
   cp ${code_dir}/configs/mongodb.repo /etc/yum.repos.d/mongodb.repo &>>${log_file}
   status_check $?
@@ -90,61 +90,7 @@ nodejs(){
   systemctl start ${component} &>>${log_file}
   status_check $?
 
+
 schema_setup
 
-}
-
-java(){
-print_head " Installing maven "
-yum install maven -y &>>${log_file}
-status_check $?
-
-print_head "Installing nginx"
-useradd roboshop &>>${log_file}
-status_check $?
-
-print_head "Installing nginx"
-mkdir /app &>>${log_file}
-status_check $?
-
-print_head "Installing nginx"
-curl -L -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shipping.zip &>>${log_file}
-status_check $?
-
-cd /app
-
-print_head "Installing nginx"
-unzip /tmp/shipping.zip &>>${log_file}
-status_check $?
-
-print_head "Installing nginx"
-mvn clean package &>>${log_file}
-status_check $?
-
-mv target/shipping-1.0.jar shipping.jar &>>${log_file}
-status_check $?
-
-print_head "Installing nginx"
-systemctl daemon-reload &>>${log_file}
-status_check $?
-
-print_head "Installing nginx"
-systemctl enable shipping &>>${log_file}
-status_check $?
-
-print_head "Installing nginx"
-systemctl start shipping &>>${log_file}
-status_check $?
-
-print_head "Installing nginx"
-yum install mysql -y &>>${log_file}
-status_check $?
-
-print_head "Installing nginx"
-mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -pRoboShop@1 < /app/schema/shipping.sql &>>${log_file}
-status_check $?
-
-print_head "Installing nginx"
-systemctl restart shipping &>>${log_file}
-status_check $?
 }
