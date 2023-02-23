@@ -1,4 +1,4 @@
-code_dir=$(pwd)
+ code_dir=$(pwd)
 log_file=/tmp/roboshop.log
 rm -f ${log_file}
 
@@ -103,8 +103,9 @@ nodejs() {
   npm install &>>${log_file}
   status_check $?
 
+#Schema setup function
   schema_setup
-
+# Systemd setup function
   systemd_setup
 
 }
