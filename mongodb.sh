@@ -14,14 +14,14 @@ sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>>${log_file}
 status_check $?
 
 print_head "Enable Mongodb"
-systemctl enable mongod
+systemctl enable mongod &>>${log_file}
 status_check $?
 
 print_head "Start Mongodb"
-systemctl start mongod
+systemctl start mongod &>>${log_file}
 status_check $?
 #Update config file vim /etc/mongod.conf from 127.0.0.1 with 0.0.0.0
 
 print_head "restart MongoDB"
-systemctl restart mongod
+systemctl restart mongod &>>${log_file}
 status_check $?
