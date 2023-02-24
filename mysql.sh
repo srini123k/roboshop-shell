@@ -11,7 +11,7 @@ dnf module disable mysql -y &>>${log_file}
 status_check $?
 
 print_head "Copy mysql repo file"
-cp ${code_dir}/configs/mysql.conf /etc/nginx/default.d/mysql.conf &>>${log_file}
+cp ${code_dir}/configs/mysql.repo /etc/nginx/default.d/mysql.repo &>>${log_file}
 status_check $?
 
 
