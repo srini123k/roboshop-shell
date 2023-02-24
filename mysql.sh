@@ -16,7 +16,8 @@ status_check $?
 
 
 print_head "Installing mysql server"
-yum install mysql-community-server -y &>>${log_file}
+#yum install mysql-community-server -y &>>${log_file}
+yum install mysql-community-server -y  &>>${log_file}
 status_check $?
 
 print_head "enable mysql service"
